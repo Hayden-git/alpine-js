@@ -22,7 +22,7 @@
             <div>
                 <input type="checkbox">
                 <span x-text="todo.name"></span>
-                <button>x</button>
+                <button x-on:click="todos = todos.filter((currTodo) => currTodo != todo)">x</button>
             </div>
         </template>
     </div>
