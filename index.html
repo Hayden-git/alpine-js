@@ -14,7 +14,8 @@
         <!-- submit.prevent stops the page from refreshing when users press "add" button -->
         <form x-on:submit.prevent>
             <input x-model="userInput" placeholder="Enter Todo Item" type="text">
-            <button x-on:click="todos.push({name: userInput, completed: false})">Add</button>
+            <!-- This button pushes the user's input to the todos array... Then sets the input field to empty to clear it -->
+            <button x-on:click="todos.push({name: userInput, completed: false}); userInput = ''">Add</button>
         </form>
 
         <template x-for="todo in todos">
@@ -22,7 +23,7 @@
             <div>
                 <input type="checkbox">
                 <span x-text="todo.name"></span>
-                <button x-on:click="todos = todos.filter((currTodo) => currTodo != todo)">x</button>
+                <button @click="todos = todos.filter((currTodo) => currTodo != todo)">x</button>
             </div>
         </template>
     </div>
